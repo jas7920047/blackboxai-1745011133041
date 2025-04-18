@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indian Food - Accessibility App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-light-start: #e0f2fe;
+      --color-light-end: #bae6fd;
+    }
+    .bg-ombre {
+      background: linear-gradient(135deg, var(--color-light-start), var(--color-light-end));
+    }
+  </style>
+</head>
+<body class="bg-ombre font-sans min-h-screen flex flex-col">
+  <nav class="bg-white bg-opacity-70 backdrop-blur-md shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-semibold text-blue-700">AccessibilityApp</a>
+      <ul class="flex space-x-6 text-blue-700 font-medium">
+        <li><a href="index.html" class="hover:text-blue-900 transition">Home</a></li>
+        <li><a href="store.html" class="hover:text-blue-900 transition">Store</a></li>
+        <li><a href="accessibility.html" class="hover:text-blue-900 transition">Accessibility Features</a></li>
+        <li><a href="blogs.html" class="hover:text-blue-900 transition">Blogs</a></li>
+        <li><a href="forums.html" class="hover:text-blue-900 transition">Forums</a></li>
+        <li><a href="food.html" class="hover:text-blue-900 transition">Food</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="flex-grow container mx-auto px-6 py-12 text-blue-900">
+    <h1 class="text-4xl font-extrabold mb-8 text-center">Indian Food Items</h1>
+    <div id="food-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Food items will be dynamically inserted here -->
+    </div>
+  </main>
+
+  <footer class="bg-white bg-opacity-70 backdrop-blur-md text-blue-700 py-6 text-center">
+    &copy; 2024 AccessibilityApp. All rights reserved.
+  </footer>
+
+  <script>
+    const foodItems = [
+      { name: "Butter Chicken", description: "Creamy tomato-based chicken curry", icon: "fas fa-drumstick-bite" },
+      { name: "Paneer Tikka", description: "Grilled spiced paneer cubes", icon: "fas fa-cheese" },
+      { name: "Masala Dosa", description: "Crispy rice crepe with spiced potato filling", icon: "fas fa-utensils" },
+      { name: "Chole Bhature", description: "Spicy chickpea curry with fried bread", icon: "fas fa-bread-slice" },
+      { name: "Biryani", description: "Fragrant spiced rice with meat or vegetables", icon: "fas fa-seedling" },
+      { name: "Samosa", description: "Fried pastry with savory filling", icon: "fas fa-pizza-slice" }
+    ];
+
+    const foodList = document.getElementById('food-list');
+
+    function createFoodCard(food) {
+      const card = document.createElement('div');
+      card.className = 'bg-white bg-opacity-80 rounded-lg shadow-lg p-6 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300';
+
+      const icon = document.createElement('i');
+      icon.className = food.icon + ' text-4xl text-blue-600 mb-4';
+
+      const name = document.createElement('h2');
+      name.className = 'text-xl font-semibold mb-2';
+      name.textContent = food.name;
+
+      const description = document.createElement('p');
+      description.className = 'mb-4';
+      description.textContent = food.description;
+
+      const button = document.createElement('button');
+      button.className = 'mt-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition transform hover:scale-105';
+      button.textContent = 'Order Now';
+      button.addEventListener('click', () => {
+        alert(`You clicked to order ${food.name}`);
+      });
+
+      card.appendChild(icon);
+      card.appendChild(name);
+      card.appendChild(description);
+      card.appendChild(button);
+
+      return card;
+    }
+
+    foodItems.forEach(food => {
+      const card = createFoodCard(food);
+      foodList.appendChild(card);
+    });
+  </script>
+</body>
+</html>
