@@ -45,11 +45,11 @@
 
   <script>
     const stores = [
-      { name: "Accessible Tech Hub", address: "123 Main St", phone: "555-1234" },
-      { name: "Inclusive Solutions", address: "456 Oak Ave", phone: "555-5678" },
-      { name: "Assistive Gear Store", address: "789 Pine Rd", phone: "555-9012" },
-      { name: "Mobility Plus", address: "321 Elm St", phone: "555-3456" },
-      { name: "Vision Aid Center", address: "654 Maple Blvd", phone: "555-7890" }
+      { name: "Accessible Tech Hub", address: "123 Main St", phone: "555-1234", image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200" },
+      { name: "Inclusive Solutions", address: "456 Oak Ave", phone: "555-5678", image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200" },
+      { name: "Assistive Gear Store", address: "789 Pine Rd", phone: "555-9012", image: "https://images.pexels.com/photos/3184300/pexels-photo-3184300.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200" },
+      { name: "Mobility Plus", address: "321 Elm St", phone: "555-3456", image: "https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200" },
+      { name: "Vision Aid Center", address: "654 Maple Blvd", phone: "555-7890", image: "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200" }
     ];
 
     const storeList = document.getElementById('store-list');
@@ -57,6 +57,11 @@
     function createStoreCard(store) {
       const card = document.createElement('div');
       card.className = 'bg-white bg-opacity-80 rounded-lg shadow-lg p-6 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300';
+
+      const img = document.createElement('img');
+      img.src = store.image;
+      img.alt = store.name;
+      img.className = 'rounded mb-4 max-h-40 object-cover';
 
       const name = document.createElement('h2');
       name.className = 'text-xl font-semibold mb-2';
@@ -71,16 +76,33 @@
       phone.innerHTML = '<i class="fas fa-phone mr-2"></i>' + store.phone;
 
       const button = document.createElement('button');
-      button.className = 'mt-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition transform hover:scale-105';
-      button.textContent = 'Visit Store';
-      button.addEventListener('click', () => {
+      button.className = 'mt-auto bg-blue-600 text-white px-4 py-2 rounded flex items-center justify-center space-x-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition transform hover:scale-105';
+
+      const btnImg = document.createElement('img');
+      btnImg.src = store.image;
+      btnImg.alt = store.name;
+      btnImg.className = 'w-6 h-6 rounded';
+
+      const btnText = document.createElement('span');
+      btnText.textContent = 'Visit Store';
+
+      const speakerBtn = document.createElement('button');
+      speakerBtn.setAttribute('aria-label', `Play description for ${store.name}`);
+      speakerBtn.className = 'bg-gray-300 text-gray-700 px-3 py-2 rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 transition';
+      speakerBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+      speakerBtn.addEventListener('click', () => {
         alert(`You clicked on ${store.name}`);
       });
 
+      button.appendChild(btnImg);
+      button.appendChild(btnText);
+
+      card.appendChild(img);
       card.appendChild(name);
       card.appendChild(address);
       card.appendChild(phone);
       card.appendChild(button);
+      card.appendChild(speakerBtn);
 
       return card;
     }
