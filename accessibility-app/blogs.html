@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blogs - Accessibility App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --color-light-start: #e0f2fe;
+      --color-light-end: #bae6fd;
+    }
+    .bg-ombre {
+      background: linear-gradient(135deg, var(--color-light-start), var(--color-light-end));
+    }
+  </style>
+</head>
+<body class="bg-ombre font-sans min-h-screen flex flex-col">
+  <nav class="bg-white bg-opacity-70 backdrop-blur-md shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-semibold text-blue-700">HyperAccessi Store</a>
+      <ul class="flex space-x-6 text-blue-700 font-medium">
+        <li><a href="index.html" class="hover:text-blue-900 transition">Home</a></li>
+        <li><a href="store.html" class="hover:text-blue-900 transition">Store</a></li>
+        <li><a href="accessibility.html" class="hover:text-blue-900 transition">Accessibility Features</a></li>
+        <li><a href="blogs.html" class="hover:text-blue-900 transition">Blogs</a></li>
+        <li><a href="forums.html" class="hover:text-blue-900 transition">Forums</a></li>
+        <li><a href="food.html" class="hover:text-blue-900 transition">Food</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="flex-grow container mx-auto px-6 py-12 text-blue-900">
+    <h1 class="text-4xl font-extrabold mb-8 text-center">Blogs</h1>
+    <p class="text-center max-w-xl mx-auto mb-6">Coming soon: insightful articles and updates on accessibility and technology.</p>
+  </main>
+
+  <footer class="bg-white bg-opacity-70 backdrop-blur-md text-blue-700 py-6 text-center">
+    &copy; 2024 AccessibilityApp. All rights reserved.
+  </footer>
+</body>
+</html>
